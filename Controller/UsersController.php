@@ -82,7 +82,7 @@ class UsersController extends AppController {
 			 */
 			if ($this->User->validates()) {
 				$prevSessionData = $this->Session->read('form.data');
-				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				$currentSessionData = Hash::mergeDiff( $this->request->data, (array) $prevSessionData);
 
 				/**
 				 * if this is not the last step we replace session data with the new merged array
